@@ -1,0 +1,40 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+    <mat-card fxFlex="25">
+        <mat-toolbar color="primary">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon>polymer</mat-icon>
+            </button>
+            <span>Registro</span>
+            <span class="example-spacer"></span>
+        </mat-toolbar>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="registroForm"
+            (ngSubmit)="registro()">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input formControlName="nombre" required matInput type="text" class="form-control" placeholder="Nombre"
+                    [class.is-invalid]="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched "
+                    [class.is-valid]="registroForm.get('nombreregistro')?.valid && registroForm.get('nombreregistro')?.touched">
+                <mat-error class="text-danger" *ngIf="registroForm.get('nombre')?.invalid ">
+                    Este campo es requerido, solo se aceptan letras y unmínimo de caracteres (3).
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input formControlName="email" required class="form-control" matInput type="email" placeholder="Email"
+                    [class.is-invalid]="registroForm.get('email')?.invalid && registroForm.get('email')?.touched "
+                    [class.is-valid]="registroForm.get('email')?.valid && registroForm.get('email')?.touched">
+                <mat-error class="text-danger" *ngIf="registroForm.get('email')?.invalid ">
+                    Se requiere un email valido.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input formControlName="contraseña" required class="form-control" matInput type="password"
+                    placeholder="Contraseña">
+            </mat-form-field>
+            <button mat-raised-button type="submit">Registrarse</button>
+        </form>
+        <a style="color: white; margin-top:10px; margin-left: 5px;" routerLink="/login">Ya estas registrado? Inicia
+            sesion</a>
+    </mat-card>
+</div>
